@@ -2,7 +2,7 @@
   "name": "build-worker",
   "description": "Build your Cloudflare Workers with esbuild",
   "version": "0.1.1",
-  "main": "./dist/index.js",
+  "main": "./build-worker.mjs",
   "dependencies": {
     "@esbuild-plugins/node-modules-polyfill": "^0.1.4",
     "esbuild": "^0.14.27"

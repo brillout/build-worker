@@ -29,3 +29,13 @@ Usage:
      ```shell
      npm run build:worker
      ```
+
+`build-worker` replaces any occurrences of `IS_CLOUDFLARE_WORKER` with `true`, which your code can use to determine whether its being run in a Cloudflare Worker:
+
+```js
+if (IS_CLOUDFLARE_WORKER !== 'undefined' && IS_CLOUDFLARE_WORKER === true) {
+  // Do something that should only happen in Cloudflare Workers
+} else {
+  // Do something that should not happen in Cloudflare Workers
+}
+```

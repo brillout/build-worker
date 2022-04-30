@@ -15,6 +15,9 @@ function buildWorker({ entry, out, debug }) {
     format: 'esm',
     target: 'es2020',
     bundle: true,
-    minify: !debug
+    minify: !debug,
+    define: {
+      IS_CLOUDFLARE_WORKER: 'true'
+    }
   })
 }

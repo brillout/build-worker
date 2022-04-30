@@ -5,9 +5,9 @@ import { buildWorker } from './build-worker.mjs'
 build()
 
 async function build() {
-  const { entry, out } = getArgs()
+  const { entry, out, debug } = getArgs()
   try {
-    await buildWorker({ entry, out })
+    await buildWorker({ entry, out, debug })
     console.log('[build-worker] Worker built successfully.')
   } catch (err) {
     console.error('[build-worker] Worker build failed.', err)
@@ -17,10 +17,15 @@ async function build() {
 function getArgs() {
   let entry
   let out
+  let debug = false
 
   const args = process.argv.filter(Boolean)
   let state = null
   for (const arg of args) {
+    if (arg === '--debug') {
+      debug = true
+      continue;
+    }
     if (arg === '--entry') {
       state = 'ENTRY'
       continue;
@@ -46,5 +51,5 @@ function getArgs() {
     throw new Error('[build-worker] CLI argument --out missing.')
   }
 
-  return { entry, out }
+  return { entry, out, debug }
 }

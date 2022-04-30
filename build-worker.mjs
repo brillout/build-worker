@@ -3,7 +3,7 @@ export { buildWorker }
 import esbuild from 'esbuild'
 import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill'
 
-function buildWorker({ entry, out }) {
+function buildWorker({ entry, out, debug }) {
   return esbuild.build({
     plugins: [NodeModulesPolyfillPlugin()],
     platform: 'browser',
@@ -14,6 +14,7 @@ function buildWorker({ entry, out }) {
     logLevel: 'warning',
     format: 'esm',
     target: 'es2020',
-    bundle: true
+    bundle: true,
+    minify: !debug
   })
 }

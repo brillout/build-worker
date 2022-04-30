@@ -20,10 +20,11 @@ Usage:
      // package.json
      {
        "scripts": {
-         "build:worker": "build-worker --entry worker.js --out dist/worker.js"
+         "build:worker": "build-worker --entry worker.js --out dist/worker.js --debug"
        }
      }
      ```
+     > The `--debug` flag disables minification, making debugging much easier.
   3. Run your script.
      ```shell
      npm run build:worker

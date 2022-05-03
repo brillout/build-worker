@@ -7,7 +7,7 @@ function buildWorker({ entry, out, debug }) {
   return esbuild.build({
     plugins: [NodeModulesPolyfillPlugin()],
     platform: 'browser',
-    conditions: ['node'],
+    conditions: ['worker', 'browser'],
     entryPoints: [entry],
     sourcemap: true,
     outfile: out,

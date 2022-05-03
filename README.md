@@ -42,3 +42,9 @@ if (IS_CLOUDFLARE_WORKER !== 'undefined' && IS_CLOUDFLARE_WORKER === true) {
   // Do something that should not happen in Cloudflare Workers
 }
 ```
+
+## How it works
+
+`build-worker` uses the same esbuild configuration than Wrangler 2.
+
+See https://github.com/evanw/esbuild/issues/1189.

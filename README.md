@@ -10,25 +10,28 @@ Problem: Wrangler 2 is [not production-ready](https://github.com/cloudflare/wran
 <br/>
 Solution: `build-worker`.
 
-Usage:
-  1. Install.
-     ```
-     npm install build-worker
-     ```
-  2. Add a `package.json` script.
-     ```json5
-     // package.json
-     {
-       "scripts": {
-         "build:worker": "build-worker --entry worker.js --out dist/worker.js --debug"
-       }
+## Usage
+
+1. Install.
+   ```
+   npm install build-worker
+   ```
+2. Add a `package.json` script.
+   ```json5
+   // package.json
+   {
+     scripts: {
+       'build:worker': 'build-worker --entry worker.js --out dist/worker.js --debug'
      }
-     ```
-     > The `--debug` flag disables minification, making debugging much easier.
-  3. Run your script.
-     ```shell
-     npm run build:worker
-     ```
+   }
+   ```
+   > The `--debug` flag disables minification, making debugging much easier.
+3. Run your script.
+   ```shell
+   npm run build:worker
+   ```
+
+## `IS_CLOUDFLARE_WORKER`
 
 `build-worker` replaces any occurrences of `IS_CLOUDFLARE_WORKER` with `true`, which your code can use to determine whether its being run in a Cloudflare Worker:
 

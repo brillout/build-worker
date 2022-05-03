@@ -10,7 +10,7 @@ async function build() {
     await buildWorker({ entry, out, debug })
     console.log('[build-worker] Worker built successfully.')
   } catch (err) {
-    console.error('[build-worker] Worker build failed.', err)
+    console.error('[build-worker] Failed to build worker.', err)
   }
 }
 

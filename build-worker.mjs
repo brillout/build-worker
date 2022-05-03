@@ -3,7 +3,7 @@ export { buildWorker }
 import esbuild from 'esbuild'
 import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill'
 
-function buildWorker({ entry, out, debug }) {
+function buildWorker({ entry, out, debug } = {}) {
   return esbuild.build({
     plugins: [NodeModulesPolyfillPlugin()],
     platform: 'browser',

@@ -31,6 +31,13 @@ Solution: `build-worker`.
    npm run build:worker
    ```
 
+It can also be used programmatically:
+
+```js
+import { buildWorker } from 'build-worker'
+await buildWorker({ entry: 'worker.js' , out: 'dist/worker.js', debug: false })
+```
+
 ## `IS_CLOUDFLARE_WORKER`
 
 `build-worker` replaces any occurrences of `IS_CLOUDFLARE_WORKER` with `true`, which your code can use to determine whether its being run in a Cloudflare Worker:

@@ -1,7 +1,7 @@
 {
   "name": "build-worker",
   "description": "Build your Cloudflare Workers with esbuild",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "main": "./build-worker.mjs",
   "types": "./build-worker.d.ts",
   "dependencies": {

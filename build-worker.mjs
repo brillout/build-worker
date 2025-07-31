@@ -5,7 +5,7 @@ import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfil
 
 function buildWorker({ entry, out, debug, external } = {}) {
   external ??= []
-  external.push(['cloudflare:workers'])
+  external.push('cloudflare:workers')
   return esbuild.build({
     plugins: [NodeModulesPolyfillPlugin()],
     platform: 'browser',

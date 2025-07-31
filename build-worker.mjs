@@ -4,14 +4,16 @@ import esbuild from 'esbuild'
 import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill'
 
 function buildWorker({ entry, out, debug, external } = {}) {
+  external ??= []
+  external.push(['cloudflare:workers'])
   return esbuild.build({
     plugins: [NodeModulesPolyfillPlugin()],
     platform: 'browser',
     conditions: ['worker', 'browser'],
     entryPoints: [entry],
-    sourcemap: true,
-    outfile: out,
     external,
+    outfile: out,
+    sourcemap: true,
     logLevel: 'warning',
     format: 'esm',
     target: 'es2020',

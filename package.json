@@ -8,6 +8,10 @@
     "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
     "esbuild": "^0.25.8"
   },
+  "scripts": {
+    "release": "npm version patch && npm publish && git push && git push --tags",
+    "reset": "git clean -Xdf && pnpm install && pnpm run build"
+  },
   "bin": {
     "build-worker": "./cli.mjs"
   },

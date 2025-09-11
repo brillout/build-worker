@@ -25,38 +25,26 @@ function getArgs() {
   for (const arg of args) {
     if (arg === '--debug') {
       debug = true
-      continue;
-    }
-    if (arg === '--entry') {
+    } else if (arg === '--entry') {
       state = 'ENTRY'
-      continue;
-    }
-    if (arg === '--external') {
+    } else if (arg === '--external') {
       state = 'EXTERNAL'
-      continue;
-    }
-    if (arg === '--out') {
+    } else if (arg === '--out') {
       state = 'OUT'
-      continue;
-    }
-    if (state === 'ENTRY') {
+    } else if (state === 'ENTRY') {
       entry = arg
       state = null
-      continue
-    }
-    if (state === 'EXTERNAL') {
+    } else if (state === 'EXTERNAL') {
       external.push(arg)
       /* Allow multiple values
       state = null
       */
-      continue
-    }
-    if (state === 'OUT') {
+    } else if (state === 'OUT') {
       out = arg
       state = null
-      continue
+    } else {
+      throw new Error('[build-worker] Wrong CLI usage')
     }
-    throw new Error('[build-worker] Wrong CLI usage')
   }
 
   if (!entry) {

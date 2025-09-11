@@ -42,17 +42,21 @@ function getArgs() {
     if (state === 'ENTRY') {
       entry = arg
       state = null
+      continue
     }
     if (state === 'EXTERNAL') {
       external.push(arg)
       /* Allow multiple values
       state = null
       */
+      continue
     }
     if (state === 'OUT') {
       out = arg
       state = null
+      continue
     }
+    throw new Error('[build-worker] Wrong CLI usage')
   }
 
   if (!entry) {

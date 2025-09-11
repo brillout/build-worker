@@ -5,9 +5,9 @@ import { buildWorker } from './build-worker.mjs'
 build()
 
 async function build() {
-  const { entry, out, debug } = getArgs()
+  const { entry, out, debug, external } = getArgs()
   try {
-    await buildWorker({ entry, out, debug })
+    await buildWorker({ entry, out, debug, external })
     console.log('[build-worker] Worker built successfully.')
   } catch (err) {
     console.error('[build-worker] Failed to build worker.', err)
@@ -16,6 +16,7 @@ async function build() {
 
 function getArgs() {
   let entry
+  let external = []
   let out
   let debug = false
 
@@ -30,6 +31,10 @@ function getArgs() {
       state = 'ENTRY'
       continue;
     }
+    if (arg === '--external') {
+      state = 'EXTERNAL'
+      continue;
+    }
     if (arg === '--out') {
       state = 'OUT'
       continue;
@@ -37,6 +42,12 @@ function getArgs() {
     if (state === 'ENTRY') {
       entry = arg
       state = null
+    }
+    if (state === 'EXTERNAL') {
+      external.push(arg)
+      /* Allow multiple values
+      state = null
+      */
     }
     if (state === 'OUT') {
       out = arg

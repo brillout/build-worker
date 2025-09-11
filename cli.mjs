@@ -20,7 +20,7 @@ function getArgs() {
   let out
   let debug = false
 
-  const args = process.argv.filter(Boolean)
+  const args = process.argv.slice(2).filter(Boolean)
   let state = null
   for (const arg of args) {
     if (arg === '--debug') {
@@ -43,6 +43,8 @@ function getArgs() {
       out = arg
       state = null
     } else {
+      console.log('state', state)
+      console.log('arg', arg)
       throw new Error('[build-worker] Wrong CLI usage')
     }
   }
@@ -54,5 +56,5 @@ function getArgs() {
     throw new Error('[build-worker] CLI argument --out missing.')
   }
 
-  return { entry, out, debug }
+  return { entry, out, debug, external }
 }
